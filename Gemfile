@@ -55,3 +55,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "thin", "~> 1.7"
+
+gem "omniauth-github", "~> 1.3"
+
+gem "dotenv-rails", "~> 2.7"

@@ -26,4 +26,24 @@ class SessionsController < ApplicationController
         session.clear
     end
 
+    def github_redirect
+        redirect_to '/auth/github'
+    end
+
+    def github_callback
+        user = User.find_or_create_by(github_uid: auth['uid']) do |u|
+            u.email = auth['info']['email'] || auth['info']['name']
+            u.password = 'badpassword'
+        end
+        session[:user_id] = user.id
+        cookies[:logged_in] = true
+        redirect_to 'http://localhost:8000'
+    end
+
+    private
+
+    def auth
+        request.env['omniauth.auth']
+    end
+
 end

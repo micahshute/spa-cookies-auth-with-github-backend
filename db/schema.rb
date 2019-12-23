@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2019_12_20_233342) do
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "password_digest"
+    t.string "github_uid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
